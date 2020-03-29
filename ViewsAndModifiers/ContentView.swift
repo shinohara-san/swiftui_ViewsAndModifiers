@@ -1,16 +1,28 @@
-//
-//  ContentView.swift
-//  ViewsAndModifiers
-//
-//  Created by Yuki Shinohara on 2020/03/29.
-//  Copyright © 2020 Yuki Shinohara. All rights reserved.
-//
-
 import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        Text("Hello, World!")
+
+         Text("Coronavirus sucks")
+//        .modifier(Watermark())
+         .selfMadeModifier()
+    }
+}
+
+struct originalModifier: ViewModifier {
+//    var text: String
+    func body(content: Content) -> some View {
+//        ZStack(alignment: .bottomTrailing) {
+            content
+                .font(.largeTitle)
+                .foregroundColor(.yellow)
+//        }
+    }
+}
+
+extension View {
+    func selfMadeModifier() -> some View {
+        self.modifier(originalModifier())
     }
 }
 
